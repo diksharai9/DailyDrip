@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-5f2-^cnbbcqpzp%yi85^$_fq06$**(jpd+n53tl@_1a(6j=2-a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'backend-zos8.onrender.com',  # 👈 Add your Render backend domain
+    'localhost',
+    '127.0.0.1',
+]
+
 
 
 # Application definition
