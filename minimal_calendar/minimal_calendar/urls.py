@@ -1,5 +1,5 @@
 from django.urls import path
-from tasks.views import get_tasks, create_task, update_task, register_user, login_user
+from tasks.views import get_tasks, create_task, update_task, register_user
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
