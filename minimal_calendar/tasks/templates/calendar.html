@@ -1,0 +1,56 @@
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar</title>
+  <style>
+    body { font-family: sans-serif; background: #f5f5f5; }
+    .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .day {
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: white;
+      min-height: 120px;
+      transition: background 0.3s ease;
+    }
+    .green { background: #c6f6d5; } /* Light green */
+    ul { list-style: none; padding-left: 0; margin: 8px 0 0 0; }
+    li { font-size: 14px; margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+  <h2>{{ month }}</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Task</button>
+  </form>
+
+  <div class="calendar">
+    {% for day in days %}
+      {% with day_tasks=calendar_data|get_item:day %}
+        {% if day_tasks %}
+          {% if day_tasks|length == day_tasks|completed_count %}
+            <div class="day green">
+          {% else %}
+            <div class="day">
+          {% endif %}
+              <strong>{{ day.day }}</strong>
+              <ul>
+                {% for task in day_tasks %}
+                  <li>{{ task.description }} {% if task.completed %}✅{% endif %}</li>
+                {% endfor %}
+              </ul>
+            </div>
+        {% else %}
+          <div class="day">
+            <strong>{{ day.day }}</strong>
+          </div>
+        {% endif %}
+      {% endwith %}
+    {% endfor %}
+  </div>
+</body>
+</html>
