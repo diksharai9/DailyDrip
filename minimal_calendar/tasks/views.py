@@ -61,6 +61,7 @@ def register_user(request):
     user = User.objects.create_user(username=username, password=password)
     token, _ = Token.objects.get_or_create(user=user)
     return Response({"token": token.key}, status=201)
+
 @api_view(['POST'])
 def login_user(request):
     from django.contrib.auth import authenticate
