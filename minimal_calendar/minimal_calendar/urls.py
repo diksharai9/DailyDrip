@@ -9,6 +9,5 @@ urlpatterns = [
     path('api/token/', obtain_auth_token),
     path('api/register/', register_user),
     path('token-auth/', obtain_auth_token),
-    path('login/', login_user),
 
 ]

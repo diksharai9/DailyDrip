@@ -62,14 +62,4 @@ def register_user(request):
     token, _ = Token.objects.get_or_create(user=user)
     return Response({"token": token.key}, status=201)
 
-@api_view(['POST'])
-def login_user(request):
-    from django.contrib.auth import authenticate
-    username = request.data.get("username")
-    password = request.data.get("password")
 
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        token, _ = Token.objects.get_or_create(user=user)
-        return Response({"token": token.key})
-    return Response({"error": "Invalid credentials"}, status=400)
