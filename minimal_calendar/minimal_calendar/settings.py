@@ -83,6 +83,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'minimal_calendar.wsgi.application'
+CORS_ALLOWED_ORIGINS = [
+    "https://minimal-calender-frontend.onrender.com",
+    "http://localhost:3000",  # optional, for local testing
+]
 
 
 # Database

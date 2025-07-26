@@ -7,7 +7,7 @@ urlpatterns = [
     path('api/tasks/create/', create_task),
     path('api/tasks/<int:task_id>/update/', update_task),
     path('api/token/', obtain_auth_token),
-    path('register/', register_user),
+    path('api/register/', register_user),
     path('token-auth/', obtain_auth_token),
     path('login/', login_user),
 
